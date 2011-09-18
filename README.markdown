@@ -28,16 +28,19 @@ This project demonstrates a different approach to the same problem. In this proj
 The sample is setup to store content permanently with ASIDownloadCache for demonstration purposes. You can change this or customise the requests in other ways by modifying startRequest in ProxyRequestResponseHandler.m.
 
 
-####Known issues
+###Known issues
 * Not all requests are proxied via the local webserver. In particular, content loaded via javascript is loaded by the WebView directly.
 * Some sites don't work properly at present. For example, m.youtube.com doesn't work at all, and pages on apple.com have significant rendering artifacts. In general, it works well with sites built with well-formed, standards compliant markup that don't make heavy use of JS, and less well with other sites.
 * This project includes a slightly tweaked version of ASIHTTPRequest, but I haven't got around to documenting these changes or moving them into the main ASIHTTTPRequest distribution.
 * Libxml can get shouty in your console when it finds HTML it doesn't like
 
-####Areas for improvement
-The webserver and parsing operations currently run on the main thread. It should be fairly straightforward to move these into a background thread.
+###Areas for improvement
+* The webserver and parsing operations currently run on the main thread. It should be fairly straightforward to move these into a background thread.
+* Currently only works on iOS. It should be possible to use the same approach with the WebView class on Mac.
 
-##IMPORTANT
+-- 
+
+###IMPORTANT
 This was written over a couple of weekends, and should be considered *experimental*. The code could use some cleanup. It doesn't work with all web content, and though it should be more widely compatible than ASIWebPageRequest, [many of the same limitations apply](http://allseeing-i.com/ASIHTTPRequest/ASIWebPageRequest#limitations). You should not consider this to be a drop-in replacement for UIWebView's regular loading mechanism - it will work best with pages you have tested and confirmed to work (it might be ideal for caching content created specifically for your app offline, for example).
 
 ###Acknowledgements
